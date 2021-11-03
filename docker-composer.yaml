@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  push_notification:
+    build:
+      image:pushnotification:latest
+    image: postgres
+    ports:
+      - "8080:8080"
+ # backend:
+ #   simple:
+ #    image: busybox:latest
+ #    command: sh -c "echo '{status:200}' > /var/www/index.html && httpd -f -p 8280 -h /var/www/"

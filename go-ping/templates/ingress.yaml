@@ -1,0 +1,20 @@
+{{- if .Values.route.enabled }}
+{{- $fullName := include "go-ping.fullname" . -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "go-ping.fullname" . }}
+  labels:
+    {{- include "go-ping.labels" . | nindent 4 }}
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: {{ $fullName }}
+    weight: 100
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  wildcardPolicy: None
+{{ end }}

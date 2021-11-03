@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: conf-map
+data:
+  application-config.yaml: |-
+    library:
+      log:
+        format: {{ .Values.log.level }}
+        level: info
+    genCode:
+      upstream:
+        contextTimeout: 120s

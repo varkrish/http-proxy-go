@@ -1,0 +1,7 @@
+library:
+  log:
+    format: json
+    level: info
+genCode:
+  upstream:
+    contextTimeout: 120s
