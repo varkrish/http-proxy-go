@@ -3,7 +3,7 @@
 ##
 
 #TODO change base image
-FROM  golang:1.16-alpine AS build
+FROM  docker.io/golang:1.16-alpine AS build
 WORKDIR /app
 COPY go.mod .
 COPY go.sum .
@@ -15,7 +15,7 @@ RUN go build -o /docker-gs-ping
 ## Deploy
 ##
 
-FROM golang:1.16-alpine
+FROM docker.io/golang:1.16-alpine
 WORKDIR /
 COPY --from=build /docker-gs-ping /docker-gs-ping
 EXPOSE 8080
